@@ -1,4 +1,5 @@
-# template
+# Week 2 Notes
+My idea came from my love of children’s drawings, so I wanted to make something cheerful like the things that often appear in them. I also really like sunflowers, and I originally wanted to make one. But drawing each sunflower petal was too difficult for me, so I ended up making a regular flower instead, along with a rising sun and a bird flying toward it.
 
 ---
 
