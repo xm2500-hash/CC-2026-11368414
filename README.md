@@ -1,5 +1,11 @@
 # Xiaoyan Ma's Creative Coding Repo
 
+[Idea 1](https://xm2500-hash.github.io/CC-2026-11368414/week3/index1.html)
+
+[Idea 2](https://xm2500-hash.github.io/CC-2026-11368414/week3/index2.html)
+
+[Idea 3](https://xm2500-hash.github.io/CC-2026-11368414/week3/index3.html)
+
 Please use this tempate to create a repository that contains your coursework for Creative Coding this semester. When you are creating a new item in your repository (either notes from a lecture, or a new assignment) please follow these two steps:
 
 1. make a copy of the "template" folder and rename it to match your given activity (week1 or assignment1, for instance). 
