@@ -4,10 +4,10 @@ function setup() {
 
 function draw() {
   background(240);
-  noStroke();
 
   // 只要 X 还比画布小，就一直加
   for (let x = 30; x < width; x += 60) {
+    //只要Y比画布小就一直加，
     for (let y = 20; y < height; y += 60) {
 
       // 圆的大小取决于它现在的 y 位置
