@@ -41,7 +41,7 @@ function draw() {
 function keyPressed() {
 
   if (key == "r") {
-    seed = floor(random(11111));
+    seed = floor(random(2004041));
   }
 
   if (key == "s") {
