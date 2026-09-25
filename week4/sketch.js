@@ -1,5 +1,5 @@
 let doExport = false;
-let seed = 8199;
+let seed = 2004;
 
 function setup() {
   createCanvas(576, 384);
