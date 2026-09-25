@@ -1,5 +1,6 @@
 # Xiaoyan Ma's Creative Coding Repo
 
+
 Please use this tempate to create a repository that contains your coursework for Creative Coding this semester. When you are creating a new item in your repository (either notes from a lecture, or a new assignment) please follow these two steps:
 
 1. make a copy of the "template" folder and rename it to match your given activity (week1 or assignment1, for instance). 
