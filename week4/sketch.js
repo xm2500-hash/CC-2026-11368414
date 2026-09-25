@@ -1,17 +1,21 @@
-let saveSvg = false;
+let doExport = false;
+let seed = 8199;
 
 function setup() {
   createCanvas(576, 384);
 }
 
 function draw() {
+
+  if (doExport) {
+    beginRecordSvg("circlePattern" + seed + ".svg");
+  }
+
   background(255);
   noFill();
-  randomSeed(10);
+  stroke(0);
 
-  if (saveSvg) {
-    beginRecordSvg("circlePattern.svg");
-  }
+  noiseSeed(seed);
 
   let maxSize = map(mouseX, 0, width, 50, 80);
 
@@ -20,21 +24,27 @@ function draw() {
 
       let size = map(y, 40, height, 30, maxSize);
 
-      stroke(0);
+      let noiseVal = noise(x * 0.01, y * 0.01);
+      size = size + noiseVal * 10;
 
       circle(x, y, size);
       circle(x, y, size * 0.6);
     }
   }
 
-  if (saveSvg) {
+  if (doExport) {
     endRecordSvg();
-    saveSvg = false;
+    doExport = false;
   }
 }
 
 function keyPressed() {
-  if (key == 's') {
-    saveSvg = true;
+
+  if (key == "r") {
+    seed = floor(random(11111));
+  }
+
+  if (key == "s") {
+    doExport = true;
   }
 }
