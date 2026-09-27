@@ -22,7 +22,7 @@ function draw() {
   let maxSize = 58;
 //鼠标在最左边是50，在右边是80？
 for (let x = 50; x < width; x += 70) {
-for (let y = 40; y < height; y += 50) {
+for (let y = 40; y < height; y += 60) {
 //
 let size = map(y, 40, height, 30, maxSize);
 //x 和 y 位置生成一个随机 
