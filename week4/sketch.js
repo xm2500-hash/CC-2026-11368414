@@ -19,15 +19,15 @@ function draw() {
 
   noiseSeed(seed);
 //固定鼠标
-  let maxSize = 68;
+  let maxSize = 58;
 //鼠标在最左边是50，在右边是80？
-for (let x = 50; x < width; x += 80) {
-for (let y = 40; y < height; y += 60) {
+for (let x = 50; x < width; x += 70) {
+for (let y = 40; y < height; y += 50) {
 //
 let size = map(y, 40, height, 30, maxSize);
 //x 和 y 位置生成一个随机 
 let noiseVal = noise(x * 0.01, y * 0.01);
-size = size + noiseVal * 10;
+size = size + noiseVal * 5;
 
 circle(x, y, size);
 circle(x, y, size * 0.6);
