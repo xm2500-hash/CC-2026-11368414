@@ -18,22 +18,22 @@ function draw() {
   stroke(0);
 
   noiseSeed(seed);
+//固定鼠标
+  let maxSize = 68;
+//鼠标在最左边是50，在右边是80？
+for (let x = 50; x < width; x += 80) {
+for (let y = 40; y < height; y += 60) {
+//
+let size = map(y, 40, height, 30, maxSize);
+//x 和 y 位置生成一个随机 
+let noiseVal = noise(x * 0.01, y * 0.01);
+size = size + noiseVal * 10;
 
-  let maxSize = 70;
-
-  for (let x = 50; x < width; x += 80) {
-    for (let y = 40; y < height; y += 60) {
-
-      let size = map(y, 40, height, 30, maxSize);
-
-      let noiseVal = noise(x * 0.01, y * 0.01);
-      size = size + noiseVal * 10;
-
-      circle(x, y, size);
-      circle(x, y, size * 0.6);
+circle(x, y, size);
+circle(x, y, size * 0.6);
     }
   }
-
+  //结束画画
   if (doExport) {
     endRecordSvg();
     doExport = false;
@@ -41,11 +41,11 @@ function draw() {
 }
 
 function keyPressed() {
-
-  if (key == "r") {
+  //X变化，
+  if (key == "x") {
     seed = floor(random(2004041));
   }
-
+//S 保存
   if (key == "s") {
     doExport = true;
   }
