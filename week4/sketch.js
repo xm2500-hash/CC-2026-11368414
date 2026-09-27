@@ -1,4 +1,6 @@
+//先不要导出 SVG
 let doExport = false;
+//编号
 let seed = 2004;
 
 function setup() {
@@ -17,7 +19,7 @@ function draw() {
 
   noiseSeed(seed);
 
-  let maxSize = map(mouseX, 0, width, 50, 80);
+  let maxSize = 70;
 
   for (let x = 50; x < width; x += 80) {
     for (let y = 40; y < height; y += 60) {
