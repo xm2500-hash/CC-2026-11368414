@@ -26,7 +26,7 @@ function draw() {
       //根据 x 和 y 位置生成一个随机值
       let noiseVal = noise(x * 0.03, y * 0.03);
 
-      //圆的大小产生雷霆变化！
+      //圆的大小在雷霆变化
       let size = map(noiseVal, 0, 1, 3, 140);
 
       circle(x, y, size);
