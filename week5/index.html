@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.js"></script>
-    <script src="sketch.js"></script>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
-        margin: 0;
-      }
-      canvas {
-        display: block;
-      }
-      #main {
-        display: block;
-        width: 100%;
-        height: 100vh;
-      }
-    </style>
-    <meta name="robots" content="noindex">
-  </head>
-  <body>
-    <main id="main"></main>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.js"></script>
+
+  <!-- 这一行是关键：p5.plotSvg -->
+  <script src="https://cdn.jsdelivr.net/npm/p5.plotsvg@0.1.6/lib/p5.plotSvg.min.js"></script>
+
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+  <main></main>
+</body>
+
 </html>
