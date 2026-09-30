@@ -6,7 +6,7 @@ let seed = 2004;
 
 function setup() {
   // A4 横版比例
-  createCanvas(400, 400);
+  createCanvas(770, 523);
 }
 
 function draw() {
