@@ -20,19 +20,27 @@ function draw() {
 
   noiseSeed(seed);
 
-  for (let x = 50; x < width; x += 70) {
-    for (let y = 40; y < height; y += 60) {
+  //先画所有外圈
+for (let x = 50; x < width; x += 70) {
+  for (let y = 40; y < height; y += 60) {
 
-      //根据 x 和 y 位置生成一个随机值
-      let noiseVal = noise(x * 0.03, y * 0.03);
+    let noiseVal = noise(x * 0.03, y * 0.03);
+    let size = map(noiseVal, 0, 1, 3, 140);
 
-      //圆的大小在雷霆变化
-      let size = map(noiseVal, 0, 1, 3, 140);
-
-      circle(x, y, size);
-      circle(x, y, size * 0.6);
-    }
+    circle(x, y, size);
   }
+}
+
+//再画所有内圈
+for (let x = 50; x < width; x += 70) {
+  for (let y = 40; y < height; y += 60) {
+
+    let noiseVal = noise(x * 0.03, y * 0.03);
+    let size = map(noiseVal, 0, 1, 3, 140);
+
+    circle(x, y, size * 0.6);
+  }
+}
 
   //结束画画
   if (doExport) {
