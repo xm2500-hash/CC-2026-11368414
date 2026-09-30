@@ -5,7 +5,7 @@ let doExport = false;
 let seed = 2004;
 
 function setup() {
-  createCanvas(576, 384);
+  createCanvas(842, 595);
 }
 
 function draw() {
@@ -21,8 +21,8 @@ function draw() {
   noiseSeed(seed);
 
   //先画所有外圈
-  for (let x = 50; x < width; x += 70) {
-    for (let y = 40; y < height; y += 60) {
+  for (let x = 35; x < width; x += 70) {
+    for (let y = 30; y < height; y += 60) {
 
       let noiseVal = noise(x * 0.03, y * 0.03);
       let size = map(noiseVal, 0, 1, 3, 140);
