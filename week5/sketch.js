@@ -32,7 +32,7 @@ function draw() {
       let noiseVal = noise(x * 0.03, y * 0.03);
 
       // 圆的大小在 3 到 140 之间变化
-      let size = map(noiseVal, 0, 1, 3, 140);
+      let size = map(noiseVal, 0, 1, 3, 200);
 
       circle(x, y, size);
     }
