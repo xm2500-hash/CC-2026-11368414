@@ -42,13 +42,11 @@ function draw() {
 }
 
 function keyPressed() {
-  //按 x 换一个新的随机图案
-  if (key == "x") {
+  if (key === "x" || key === "X") {
     seed = floor(random(1000000));
   }
 
-  //按 s 保存 SVG
-  if (key == "s") {
+  if (key === "s" || key === "S") {
     doExport = true;
   }
 }
