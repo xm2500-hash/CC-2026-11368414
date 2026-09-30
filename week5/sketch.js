@@ -93,7 +93,7 @@ function draw() {
 
 function keyPressed() {
 
-  // 按 X 生成新的随机图案
+  // 按 X 生成新的随机图案a a a
   if (key === "x" || key === "X") {
     seed = floor(random(1000000));
   }
