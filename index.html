@@ -1,446 +1,243 @@
+<!-- 告诉浏览器：这是一个 HTML 网页 -->
 <!DOCTYPE html>
+
+<!-- 网页开始，主要文字使用英语 -->
 <html lang="en">
+
+<!-- head：放网页设置 -->
 <head>
+
+  <!-- 使用 UTF-8 编码，让中英文都能正常显示 -->
   <meta charset="UTF-8">
+
+  <!-- 让网页宽度跟随手机或电脑的屏幕宽度 -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 告诉搜索引擎不要收录这个网页 -->
   <meta name="robots" content="noindex">
-  <title>Xiaoyan's Creative Coding Journal</title>
 
+  <!-- 浏览器标签页上显示的名字 -->
+  <title>Xiaoyan's Creative Coding</title>
+
+  <!-- style：下面的 CSS 用来设置网页外观 -->
   <style>
-    * {
-      box-sizing: border-box;
-    }
 
+    /* 设置整个页面 */
     body {
-      margin: 0;
-      color: #514658;
+      /* 页面背景：奶油白 */
       background-color: #faf7f2;
-      background-image:
-        radial-gradient(#d9ccda 0.8px, transparent 0.8px);
-      background-size: 22px 22px;
-      font-family: Georgia, "Times New Roman", serif;
+
+      /* 默认文字颜色：深灰紫色 */
+      color: #514658;
+
+      /* 设置字体：优先使用 Georgia */
+      font-family: Georgia, serif;
+
+      /* 内容区域最宽为 800 像素 */
+      max-width: 800px;
+
+      /* 上下留 40 像素，左右自动分配，让内容居中 */
+      margin: 40px auto;
+
+      /* 内容与左右边缘之间各留 20 像素 */
+      padding: 0 20px;
+
+      /* 行距设成字号的 1.6 倍 */
       line-height: 1.6;
     }
 
-    .page {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 70px 28px 30px;
-    }
-
-    header {
-      margin-bottom: 56px;
-    }
-
-    .label {
-      display: inline-block;
-      padding: 6px 14px;
-      border: 1px solid #d9cbe3;
-      border-radius: 30px;
-      background: #f0e8f5;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
+    /* 设置页面的大标题 */
     h1 {
-      margin: 20px 0 14px;
-      font-size: clamp(38px, 6vw, 64px);
-      font-weight: normal;
-      line-height: 1.12;
-      letter-spacing: -2px;
+      /* 标题文字使用紫色 */
+      color: #9575a5;
+
+      /* 标题字号为 36 像素 */
+      font-size: 36px;
+
+      /* 标题下方留 10 像素 */
+      margin-bottom: 10px;
     }
 
-    h1 span {
-      color: #9978ac;
-    }
-
+    /* 设置名字和课程信息 */
     .intro {
-      max-width: 520px;
-      color: #796e7e;
-      font-size: 17px;
+      /* 使用稍浅的文字颜色 */
+      color: #7d7183;
+
+      /* 与下面第一张纸条之间留 30 像素 */
+      margin-bottom: 30px;
     }
 
-    .student {
-      margin-top: 22px;
-      font-family: Arial, sans-serif;
-      color: #796e7e;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-size: 23px;
-      font-weight: normal;
-    }
-
-    .section-title::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: #ded4df;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 30px 24px;
-    }
-
-    .card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      padding: 14px;
-      background: #fffdfa;
-      border: 1px solid #e5dce4;
-      border-radius: 5px;
-      box-shadow: 3px 5px 0 #eee7ed;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    /* A little piece of paper tape */
-    .card::before {
-      content: "";
-      position: absolute;
-      z-index: 1;
-      top: -10px;
-      left: calc(50% - 35px);
-      width: 70px;
-      height: 23px;
-      background: rgba(220, 201, 229, 0.65);
-      transform: rotate(-5deg);
-    }
-
-    .card:nth-child(even)::before {
-      background: rgba(240, 204, 213, 0.7);
-      transform: rotate(5deg);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 5px 10px 0 #eee7ed;
-    }
-
-    .preview {
-      display: grid;
-      place-items: center;
-      height: 165px;
-      overflow: hidden;
-      background: var(--paper);
-      border-radius: 3px;
-    }
-
-    .art {
-      color: var(--ink);
-      font-size: 75px;
-      font-weight: normal;
-      line-height: 1;
-      user-select: none;
-    }
-
-    .letters {
-      font-size: 50px;
-      font-style: italic;
-      letter-spacing: -5px;
-    }
-
-    .shapes {
-      letter-spacing: -12px;
-      transform: rotate(-10deg);
-    }
-
-    .circles {
-      width: 95px;
-      height: 95px;
-      border: 2px solid var(--ink);
-      border-radius: 50%;
-      box-shadow:
-        25px 10px 0 -7px var(--paper),
-        25px 10px 0 -5px var(--ink);
-      transform: translateX(-10px);
-    }
-
-    .pattern {
-      width: 145px;
-      height: 105px;
-      background-image:
-        radial-gradient(circle, transparent 10px, var(--ink) 11px,
-        var(--ink) 12px, transparent 13px);
-      background-size: 36px 36px;
-      transform: rotate(-8deg);
-    }
-
-    .window {
-      display: grid;
-      place-items: center;
-      width: 105px;
-      height: 105px;
-      border: 3px double var(--ink);
-      font-size: 55px;
-    }
-
-    .card-body {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      padding: 18px 6px 7px;
-    }
-
+    /* 所有 week 纸条都会使用这些设置 */
     .week {
-      margin: 0 0 7px;
-      color: #8d7896;
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      /* 文字与纸条边缘之间留 20 像素 */
+      padding: 20px;
+
+      /* 每张纸条下方留 20 像素 */
+      margin-bottom: 20px;
+
+      /* 让纸条的四个角稍微变圆 */
+      border-radius: 8px;
     }
 
-    h3 {
-      margin: 0 0 10px;
+    /* pink 类别：设置浅粉色背景 */
+    .pink {
+      background-color: #f5e3eb;
+    }
+
+    /* purple 类别：设置浅紫色背景 */
+    .purple {
+      background-color: #ede5f5;
+    }
+
+    /* 设置每张纸条里面的标题 */
+    .week h2 {
+      /* 去掉标题上方的默认空白 */
+      margin-top: 0;
+
+      /* 标题下方留 10 像素 */
+      margin-bottom: 10px;
+
+      /* 标题字号为 22 像素 */
       font-size: 22px;
-      font-weight: normal;
-      line-height: 1.25;
     }
 
-    .description {
-      margin: 0 0 20px;
-      color: #817586;
-      font-size: 14px;
+    /* 设置纸条里的每一行链接 */
+    .week p {
+      /* 每行链接上下各留 8 像素，左右不加空白 */
+      margin: 8px 0;
     }
 
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: auto;
+    /* 设置所有可以点击的链接 */
+    a {
+      /* 链接文字使用深紫色 */
+      color: #73528b;
+
+      /* 在文字下面保留下划线，方便识别链接 */
+      text-decoration: underline;
     }
 
-    .links a {
-      padding: 6px 10px;
-      border: 1px solid #ded1e3;
-      border-radius: 5px;
-      color: #70567e;
-      background: #f6f0f8;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      text-decoration: none;
-      transition: background 0.2s;
+    /* hover：鼠标移动到链接上时使用的样式 */
+    a:hover {
+      /* 鼠标放上去时，链接变成深粉色 */
+      color: #b35080;
     }
 
-    .links a:hover {
-      background: #e9dcef;
-    }
-
-    a:focus-visible {
-      outline: 3px solid #9978ac;
-      outline-offset: 4px;
-    }
-
+    /* 设置网页底部的文字 */
     footer {
-      margin-top: 55px;
-      padding: 20px 0;
-      border-top: 1px solid #ded4df;
-      color: #8d7e94;
-      font-size: 13px;
+      /* 与最后一张纸条之间留 35 像素 */
+      margin-top: 35px;
+
+      /* 底部文字居中 */
       text-align: center;
+
+      /* 底部字号为 13 像素 */
+      font-size: 13px;
+
+      /* 使用浅灰紫色 */
+      color: #8b7c91;
     }
 
-    @media (max-width: 850px) {
-      .projects {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 550px) {
-      .page {
-        padding: 40px 22px 20px;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        margin-bottom: 38px;
-      }
-
-      .preview {
-        height: 185px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .card,
-      .links a {
-        transition: none;
-      }
-    }
   </style>
+
 </head>
 
+<!-- body：放实际显示在页面上的内容 -->
 <body>
-  <div class="page">
-    <header>
-      <div class="label">A LITTLE COLLECTION OF EXPERIMENTS</div>
 
-      <h1>
-        Xiaoyan's<br>
-        <span>Creative Coding Journal</span>
-      </h1>
+  <!-- 页面的大标题 -->
+  <h1>My Creative Coding Journal</h1>
 
-      <p class="intro">
-        A place for my weekly projects, little discoveries,
-        and ideas that come to life through code.
-      </p>
+  <!-- 名字、NetID 和课程学期 -->
+  <p class="intro">
+    Xiaoyan Ma / xm2500<br>
+    Creative Coding · Fall 2026
+  </p>
 
-      <p class="student">
-        XIAOYAN MA &nbsp; / &nbsp; xm2500 &nbsp; / &nbsp; FALL 2026
-      </p>
-    </header>
+  <!-- 第一周：week 控制纸条外观，pink 控制背景颜色 -->
+  <div class="week pink">
 
-    <main>
-      <div class="section-title">
-        <h2>My weekly pages</h2>
-      </div>
+    <!-- 第一周的标题 -->
+    <h2>Week 1 — Creative Coding is...</h2>
 
-      <div class="projects">
+    <!-- href 指定点击后打开的文件；./ 表示从当前文件夹出发 -->
+    <p><a href="./week1/index.html">View Project</a></p>
 
-        <article class="card"
-          style="--paper: #f1e5ed; --ink: #ac7e9d;">
-          <div class="preview" aria-hidden="true">
-            <span class="art letters">Hello!</span>
-          </div>
+    <!-- 第一周的笔记链接 -->
+    <p><a href="./week1/README.html">Notes</a></p>
 
-          <div class="card-body">
-            <p class="week">Week 01</p>
-            <h3>Creative Coding is...</h3>
-            <p class="description">
-              The first page of my creative coding journey.
-            </p>
-
-            <div class="links">
-              <a href="./week1/index.html">View Project ↗</a>
-              <a href="./week1/README.html">Notes</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card"
-          style="--paper: #eee8f5; --ink: #9580b2;">
-          <div class="preview" aria-hidden="true">
-            <span class="art shapes">○ △ □</span>
-          </div>
-
-          <div class="card-body">
-            <p class="week">Week 02</p>
-            <h3>Processing Drawings</h3>
-            <p class="description">
-              Exploring drawing through shapes and code.
-            </p>
-
-            <div class="links">
-              <a href="./week2/index.html">View Project ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card"
-          style="--paper: #f6e9df; --ink: #b68c73;">
-          <div class="preview" aria-hidden="true">
-            <span class="art">✳</span>
-          </div>
-
-          <div class="card-body">
-            <p class="week">Week 03</p>
-            <h3>Three Little Ideas</h3>
-            <p class="description">
-              Three ideas, three different directions.
-            </p>
-
-            <div class="links">
-              <a href="./week3/index1.html">Idea 01 ↗</a>
-              <a href="./week3/index2.html">Idea 02 ↗</a>
-              <a href="./week3/index3.html">Idea 03 ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card"
-          style="--paper: #e9eee4; --ink: #8b9b78;">
-          <div class="preview" aria-hidden="true">
-            <div class="circles"></div>
-          </div>
-
-          <div class="card-body">
-            <p class="week">Week 04</p>
-            <h3>Iteration Generation II</h3>
-            <p class="description">
-              Small changes and new possibilities.
-            </p>
-
-            <div class="links">
-              <a href="./week4/index.html">View Project ↗</a>
-              <a href="./week4/Media/">Media</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card"
-          style="--paper: #f2e5f0; --ink: #a87ca8;">
-          <div class="preview" aria-hidden="true">
-            <div class="pattern"></div>
-          </div>
-
-          <div class="card-body">
-            <p class="week">Week 05</p>
-            <h3>Pattern</h3>
-            <p class="description">
-              Finding rhythm in repetition and variation.
-            </p>
-
-            <div class="links">
-              <a href="./week5/index.html">View Project ↗</a>
-              <a href="./week5/Media/">Final Pattern</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card"
-          style="--paper: #e7edf3; --ink: #8196af;">
-          <div class="preview" aria-hidden="true">
-            <div class="window">燕</div>
-          </div>
-
-          <div class="card-body">
-            <p class="week">Week 06</p>
-            <h3>A Year in One Minute</h3>
-            <p class="description">
-              A swallow, two places, and four changing seasons.
-            </p>
-
-            <div class="links">
-              <a href="./week6/index.html">View Project ↗</a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </main>
-
-    <footer>
-      Made with curiosity, a little patience, and lots of experiments.
-      <br>
-      Xiaoyan Ma · Creative Coding · 2026
-    </footer>
   </div>
+
+  <!-- 第二周：使用同样的纸条外观，背景换成紫色 -->
+  <div class="week purple">
+
+    <!-- 第二周的标题 -->
+    <h2>Week 2 — Processing Drawings</h2>
+
+    <!-- 第二周的作品链接 -->
+    <p><a href="./week2/index.html">View Project</a></p>
+
+  </div>
+
+  <!-- 第三周：粉色纸条，里面放三个 Idea 链接 -->
+  <div class="week pink">
+
+    <!-- 第三周的标题 -->
+    <h2>Week 3 — Three Ideas</h2>
+
+    <!-- 第一个 Idea -->
+    <p><a href="./week3/index1.html">Idea 1</a></p>
+
+    <!-- 第二个 Idea -->
+    <p><a href="./week3/index2.html">Idea 2</a></p>
+
+    <!-- 第三个 Idea -->
+    <p><a href="./week3/index3.html">Idea 3</a></p>
+
+  </div>
+
+  <!-- 第四周：紫色纸条 -->
+  <div class="week purple">
+
+    <!-- 第四周的标题 -->
+    <h2>Week 4 — Iteration Generation II</h2>
+
+    <!-- 第四周的作品链接 -->
+    <p><a href="./week4/index.html">View Project</a></p>
+
+    <!-- 保留原来的 Media 文件夹链接 -->
+    <p><a href="./week4/Media/">Media</a></p>
+
+  </div>
+
+  <!-- 第五周：粉色纸条 -->
+  <div class="week pink">
+
+    <!-- 第五周的标题 -->
+    <h2>Week 5 — Pattern</h2>
+
+    <!-- 第五周的作品链接 -->
+    <p><a href="./week5/index.html">View Project</a></p>
+
+    <!-- 保留原来的最终图案链接 -->
+    <p><a href="./week5/Media/">Final Pattern</a></p>
+
+  </div>
+
+  <!-- 第六周：紫色纸条 -->
+  <div class="week purple">
+
+    <!-- 第六周的标题 -->
+    <h2>Week 6 — A Year in One Minute</h2>
+
+    <!-- 打开燕子四季动画页面 -->
+    <p><a href="./week6/index.html">View Project</a></p>
+
+  </div>
+
+  <!-- 网页底部的署名 -->
+  <footer>
+    Made by Xiaoyan Ma · 2026
+  </footer>
+
 </body>
 </html>
