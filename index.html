@@ -1,29 +1,446 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.js"></script>    
-    <style>
-      * {
-        box-sizing: border-box;
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Xiaoyan's Creative Coding Journal</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #514658;
+      background-color: #faf7f2;
+      background-image:
+        radial-gradient(#d9ccda 0.8px, transparent 0.8px);
+      background-size: 22px 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 70px 28px 30px;
+    }
+
+    header {
+      margin-bottom: 56px;
+    }
+
+    .label {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid #d9cbe3;
+      border-radius: 30px;
+      background: #f0e8f5;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 20px 0 14px;
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: normal;
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: #9978ac;
+    }
+
+    .intro {
+      max-width: 520px;
+      color: #796e7e;
+      font-size: 17px;
+    }
+
+    .student {
+      margin-top: 22px;
+      font-family: Arial, sans-serif;
+      color: #796e7e;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 23px;
+      font-weight: normal;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #ded4df;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px 24px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+      background: #fffdfa;
+      border: 1px solid #e5dce4;
+      border-radius: 5px;
+      box-shadow: 3px 5px 0 #eee7ed;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    /* A little piece of paper tape */
+    .card::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: -10px;
+      left: calc(50% - 35px);
+      width: 70px;
+      height: 23px;
+      background: rgba(220, 201, 229, 0.65);
+      transform: rotate(-5deg);
+    }
+
+    .card:nth-child(even)::before {
+      background: rgba(240, 204, 213, 0.7);
+      transform: rotate(5deg);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 5px 10px 0 #eee7ed;
+    }
+
+    .preview {
+      display: grid;
+      place-items: center;
+      height: 165px;
+      overflow: hidden;
+      background: var(--paper);
+      border-radius: 3px;
+    }
+
+    .art {
+      color: var(--ink);
+      font-size: 75px;
+      font-weight: normal;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .letters {
+      font-size: 50px;
+      font-style: italic;
+      letter-spacing: -5px;
+    }
+
+    .shapes {
+      letter-spacing: -12px;
+      transform: rotate(-10deg);
+    }
+
+    .circles {
+      width: 95px;
+      height: 95px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      box-shadow:
+        25px 10px 0 -7px var(--paper),
+        25px 10px 0 -5px var(--ink);
+      transform: translateX(-10px);
+    }
+
+    .pattern {
+      width: 145px;
+      height: 105px;
+      background-image:
+        radial-gradient(circle, transparent 10px, var(--ink) 11px,
+        var(--ink) 12px, transparent 13px);
+      background-size: 36px 36px;
+      transform: rotate(-8deg);
+    }
+
+    .window {
+      display: grid;
+      place-items: center;
+      width: 105px;
+      height: 105px;
+      border: 3px double var(--ink);
+      font-size: 55px;
+    }
+
+    .card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 18px 6px 7px;
+    }
+
+    .week {
+      margin: 0 0 7px;
+      color: #8d7896;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: normal;
+      line-height: 1.25;
+    }
+
+    .description {
+      margin: 0 0 20px;
+      color: #817586;
+      font-size: 14px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .links a {
+      padding: 6px 10px;
+      border: 1px solid #ded1e3;
+      border-radius: 5px;
+      color: #70567e;
+      background: #f6f0f8;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .links a:hover {
+      background: #e9dcef;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #9978ac;
+      outline-offset: 4px;
+    }
+
+    footer {
+      margin-top: 55px;
+      padding: 20px 0;
+      border-top: 1px solid #ded4df;
+      color: #8d7e94;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-    </style>
-    <meta name="robots" content="noindex">
-  </head>
-  <body>
-    <h1>your name and netid here</h1>
-    <ul>
-      <li><a href="./week1/index.html">Assignment 1 - Creative Coding is...</a></li>
-      <li><a href="./week1/README.html">Assignment 1 - notes</a></li>
-      <li><a href="./week2/index.html">Assignment 2 – Processing drawings</a></li>
-      <li><a href="./week3/index1.html">Week 3 - Idea 1</a></li>
-      <li><a href="./week3/index2.html">Week 3 - Idea 2</a></li>
-      <li><a href="./week3/index3.html">Week 3 - Idea 3</a></li>
-      <li><a href="./week4/index.html">Week 4 - Iteration Generation II</a></li>
-     <li><a href="./week4/Media/">Week 4 - Media</a></li>
-      <li><a href="./week5/index.html">Week5 - Pattern</a></li>
-      <li><a href="./week5/Media/">Week5 - Final Pattern</a></li>
-  <a href="./week6/index.html">Week 6 — The Bird</a>
-</p>
-    </ul>
-  </body>
+    }
+
+    @media (max-width: 550px) {
+      .page {
+        padding: 40px 22px 20px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        margin-bottom: 38px;
+      }
+
+      .preview {
+        height: 185px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card,
+      .links a {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="label">A LITTLE COLLECTION OF EXPERIMENTS</div>
+
+      <h1>
+        Xiaoyan's<br>
+        <span>Creative Coding Journal</span>
+      </h1>
+
+      <p class="intro">
+        A place for my weekly projects, little discoveries,
+        and ideas that come to life through code.
+      </p>
+
+      <p class="student">
+        XIAOYAN MA &nbsp; / &nbsp; xm2500 &nbsp; / &nbsp; FALL 2026
+      </p>
+    </header>
+
+    <main>
+      <div class="section-title">
+        <h2>My weekly pages</h2>
+      </div>
+
+      <div class="projects">
+
+        <article class="card"
+          style="--paper: #f1e5ed; --ink: #ac7e9d;">
+          <div class="preview" aria-hidden="true">
+            <span class="art letters">Hello!</span>
+          </div>
+
+          <div class="card-body">
+            <p class="week">Week 01</p>
+            <h3>Creative Coding is...</h3>
+            <p class="description">
+              The first page of my creative coding journey.
+            </p>
+
+            <div class="links">
+              <a href="./week1/index.html">View Project ↗</a>
+              <a href="./week1/README.html">Notes</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card"
+          style="--paper: #eee8f5; --ink: #9580b2;">
+          <div class="preview" aria-hidden="true">
+            <span class="art shapes">○ △ □</span>
+          </div>
+
+          <div class="card-body">
+            <p class="week">Week 02</p>
+            <h3>Processing Drawings</h3>
+            <p class="description">
+              Exploring drawing through shapes and code.
+            </p>
+
+            <div class="links">
+              <a href="./week2/index.html">View Project ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card"
+          style="--paper: #f6e9df; --ink: #b68c73;">
+          <div class="preview" aria-hidden="true">
+            <span class="art">✳</span>
+          </div>
+
+          <div class="card-body">
+            <p class="week">Week 03</p>
+            <h3>Three Little Ideas</h3>
+            <p class="description">
+              Three ideas, three different directions.
+            </p>
+
+            <div class="links">
+              <a href="./week3/index1.html">Idea 01 ↗</a>
+              <a href="./week3/index2.html">Idea 02 ↗</a>
+              <a href="./week3/index3.html">Idea 03 ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card"
+          style="--paper: #e9eee4; --ink: #8b9b78;">
+          <div class="preview" aria-hidden="true">
+            <div class="circles"></div>
+          </div>
+
+          <div class="card-body">
+            <p class="week">Week 04</p>
+            <h3>Iteration Generation II</h3>
+            <p class="description">
+              Small changes and new possibilities.
+            </p>
+
+            <div class="links">
+              <a href="./week4/index.html">View Project ↗</a>
+              <a href="./week4/Media/">Media</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card"
+          style="--paper: #f2e5f0; --ink: #a87ca8;">
+          <div class="preview" aria-hidden="true">
+            <div class="pattern"></div>
+          </div>
+
+          <div class="card-body">
+            <p class="week">Week 05</p>
+            <h3>Pattern</h3>
+            <p class="description">
+              Finding rhythm in repetition and variation.
+            </p>
+
+            <div class="links">
+              <a href="./week5/index.html">View Project ↗</a>
+              <a href="./week5/Media/">Final Pattern</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card"
+          style="--paper: #e7edf3; --ink: #8196af;">
+          <div class="preview" aria-hidden="true">
+            <div class="window">燕</div>
+          </div>
+
+          <div class="card-body">
+            <p class="week">Week 06</p>
+            <h3>A Year in One Minute</h3>
+            <p class="description">
+              A swallow, two places, and four changing seasons.
+            </p>
+
+            <div class="links">
+              <a href="./week6/index.html">View Project ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <footer>
+      Made with curiosity, a little patience, and lots of experiments.
+      <br>
+      Xiaoyan Ma · Creative Coding · 2026
+    </footer>
+  </div>
+</body>
 </html>
