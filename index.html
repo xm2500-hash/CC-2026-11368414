@@ -1,52 +1,23 @@
-<!-- 告诉浏览器：这是一个 HTML 网页 -->
+
 <!DOCTYPE html>
-
-<!-- 网页开始，主要文字使用英语 -->
-<html lang="en">
-
-<!-- head：放网页设置 -->
 <head>
 
-  <!-- 使用 UTF-8 编码，让中英文都能正常显示 -->
   <meta charset="UTF-8">
 
-  <!-- 让网页宽度跟随手机或电脑的屏幕宽度 -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 告诉搜索引擎不要收录这个网页 -->
-  <meta name="robots" content="noindex">
-
-  <!-- 浏览器标签页上显示的名字 -->
   <title>Xiaoyan's Creative Coding</title>
-
-  <!-- style：下面的 CSS 用来设置网页外观 -->
   <style>
 
-    /* 设置整个页面 */
     body {
-      /* 页面背景：奶油白 */
       background-color: #faf7f2;
-
-      /* 默认文字颜色：深灰紫色 */
       color: #514658;
-
-      /* 设置字体：优先使用 Georgia */
       font-family: Georgia, serif;
-
-      /* 内容区域最宽为 800 像素 */
       max-width: 800px;
-
-      /* 上下留 40 像素，左右自动分配，让内容居中 */
       margin: 40px auto;
-
-      /* 内容与左右边缘之间各留 20 像素 */
       padding: 0 20px;
-
-      /* 行距设成字号的 1.6 倍 */
       line-height: 1.6;
     }
-
-    /* 设置页面的大标题 */
     h1 {
       /* 标题文字使用紫色 */
       color: #9575a5;
@@ -58,61 +29,43 @@
       margin-bottom: 10px;
     }
 
-    /* 设置名字和课程信息 */
     .intro {
-      /* 使用稍浅的文字颜色 */
       color: #7d7183;
 
-      /* 与下面第一张纸条之间留 30 像素 */
       margin-bottom: 30px;
     }
-
-    /* 所有 week 纸条都会使用这些设置 */
     .week {
-      /* 文字与纸条边缘之间留 20 像素 */
       padding: 20px;
 
-      /* 每张纸条下方留 20 像素 */
       margin-bottom: 20px;
 
-      /* 让纸条的四个角稍微变圆 */
+  /* 让纸条的四个角稍微变圆 */
       border-radius: 8px;
     }
-
-    /* pink 类别：设置浅粉色背景 */
     .pink {
       background-color: #f5e3eb;
     }
 
-    /* purple 类别：设置浅紫色背景 */
     .purple {
       background-color: #ede5f5;
     }
-
-    /* 设置每张纸条里面的标题 */
     .week h2 {
       /* 去掉标题上方的默认空白 */
       margin-top: 0;
 
-      /* 标题下方留 10 像素 */
       margin-bottom: 10px;
 
-      /* 标题字号为 22 像素 */
       font-size: 22px;
     }
 
     /* 设置纸条里的每一行链接 */
     .week p {
-      /* 每行链接上下各留 8 像素，左右不加空白 */
       margin: 8px 0;
     }
 
-    /* 设置所有可以点击的链接 */
     a {
-      /* 链接文字使用深紫色 */
       color: #73528b;
 
-      /* 在文字下面保留下划线，方便识别链接 */
       text-decoration: underline;
     }
 
@@ -126,14 +79,8 @@
     footer {
       /* 与最后一张纸条之间留 35 像素 */
       margin-top: 35px;
-
-      /* 底部文字居中 */
       text-align: center;
-
-      /* 底部字号为 13 像素 */
       font-size: 13px;
-
-      /* 使用浅灰紫色 */
       color: #8b7c91;
     }
 
@@ -158,83 +105,55 @@
 
     <!-- 第一周的标题 -->
     <h2>Week 1 — Creative Coding is...</h2>
-
-    <!-- href 指定点击后打开的文件；./ 表示从当前文件夹出发 -->
     <p><a href="./week1/index.html">View Project</a></p>
 
-    <!-- 第一周的笔记链接 -->
     <p><a href="./week1/README.html">Notes</a></p>
 
   </div>
 
-  <!-- 第二周：使用同样的纸条外观，背景换成紫色 -->
   <div class="week purple">
 
-    <!-- 第二周的标题 -->
     <h2>Week 2 — Processing Drawings</h2>
-
-    <!-- 第二周的作品链接 -->
     <p><a href="./week2/index.html">View Project</a></p>
 
   </div>
 
-  <!-- 第三周：粉色纸条，里面放三个 Idea 链接 -->
   <div class="week pink">
 
-    <!-- 第三周的标题 -->
+
     <h2>Week 3 — Three Ideas</h2>
 
-    <!-- 第一个 Idea -->
     <p><a href="./week3/index1.html">Idea 1</a></p>
 
-    <!-- 第二个 Idea -->
     <p><a href="./week3/index2.html">Idea 2</a></p>
 
-    <!-- 第三个 Idea -->
     <p><a href="./week3/index3.html">Idea 3</a></p>
 
   </div>
 
-  <!-- 第四周：紫色纸条 -->
   <div class="week purple">
 
-    <!-- 第四周的标题 -->
     <h2>Week 4 — Iteration Generation II</h2>
 
-    <!-- 第四周的作品链接 -->
     <p><a href="./week4/index.html">View Project</a></p>
 
-    <!-- 保留原来的 Media 文件夹链接 -->
     <p><a href="./week4/Media/">Media</a></p>
 
   </div>
 
-  <!-- 第五周：粉色纸条 -->
   <div class="week pink">
-
-    <!-- 第五周的标题 -->
     <h2>Week 5 — Pattern</h2>
 
-    <!-- 第五周的作品链接 -->
     <p><a href="./week5/index.html">View Project</a></p>
 
-    <!-- 保留原来的最终图案链接 -->
     <p><a href="./week5/Media/">Final Pattern</a></p>
 
   </div>
-
-  <!-- 第六周：紫色纸条 -->
   <div class="week purple">
-
-    <!-- 第六周的标题 -->
     <h2>Week 6 — A Year in One Minute</h2>
-
-    <!-- 打开燕子四季动画页面 -->
     <p><a href="./week6/index.html">View Project</a></p>
 
   </div>
-
-  <!-- 网页底部的署名 -->
   <footer>
     Made by Xiaoyan Ma · 2026
   </footer>
