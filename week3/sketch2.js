@@ -1,33 +1,23 @@
-
-
 function setup() {
-  createCanvas(800, 800);
-  noStroke();
+  createCanvas(576, 384);
 }
 
 function draw() {
-  background(240);
+  background(255);
+  noFill();
+  randomSeed(10);
 
-  let circleSize;
-//如果鼠标在Y上比400小，那动一下Y+100
-  if (mouseY < 400) {
-    circleSize = mouseY + 100;
-    //如果反之，
-    //900是因为我希望最小的圆也有100大小
-  } else {
-    circleSize = 900 - mouseY;
+  let maxSize = map(mouseX, 0, width, 50, 80);
+
+  for (let x = 50; x < width; x += 80) {
+    for (let y = 40; y < height; y += 60) {
+
+      let size = map(y, 40, height, 30, maxSize);
+
+      stroke(random(255), random(255), random(255));
+
+      circle(x, y, size);
+      circle(x, y, size * 0.6);
+    }
   }
-
-  let colorChange;
-//如果鼠标在 左边，把鼠标当前在 X 轴上的位置除以 4
-  if (mouseX < 400) {
-    colorChange = mouseX / 4;
-  } else {
-    colorChange = (800 - mouseX) / 4;
-  }
-
-//粉色和紫色，
-  fill(180 + colorChange, 100 + colorChange, 220);
-
-  circle(400, 400, circleSize);
 }
