@@ -1,25 +1,162 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.1/lib/p5.js"></script>    
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-    </style>
-    <meta name="robots" content="noindex">
-  </head>
-  <body>
-    <h1>your name and netid here</h1>
-    <ul>
-      <li><a href="./week1/index.html">Assignment 1 - Creative Coding is...</a></li>
-      <li><a href="./week1/README.html">Assignment 1 - notes</a></li>
-      <li><a href="./week2/index.html">Assignment 2 – Processing drawings</a></li>
-      <li><a href="./week3/index1.html">Week 3 - Idea 1</a></li>
-      <li><a href="./week3/index2.html">Week 3 - Idea 2</a></li>
-      <li><a href="./week3/index3.html">Week 3 - Idea 3</a></li>
-      <li><a href="./week4/index.html">Week 4 - Iteration Generation II</a></li>
-     <li><a href="./week4/Media/">Week 4 - Media</a></li>
-    </ul>
-  </body>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Xiaoyan's Creative Coding</title>
+  <style>
+
+    body {
+      background-color: #faf7f2;
+      color: #514658;
+      font-family: Georgia, serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      /* 标题文字使用紫色 */
+      color: #9575a5;
+
+      /* 标题字号为 36 像素 */
+      font-size: 36px;
+
+      /* 标题下方留 10 像素 */
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      color: #7d7183;
+
+      margin-bottom: 30px;
+    }
+    .week {
+      padding: 20px;
+
+      margin-bottom: 20px;
+
+  /* 让纸条的四个角稍微变圆 */
+      border-radius: 8px;
+    }
+    .pink {
+      background-color: #f5e3eb;
+    }
+
+    .purple {
+      background-color: #ede5f5;
+    }
+    .week h2 {
+      /* 去掉标题上方的默认空白 */
+      margin-top: 0;
+
+      margin-bottom: 10px;
+
+      font-size: 22px;
+    }
+
+    /* 设置纸条里的每一行链接 */
+    .week p {
+      margin: 8px 0;
+    }
+
+    a {
+      color: #73528b;
+
+      text-decoration: underline;
+    }
+
+    /* hover：鼠标移动到链接上时使用的样式 */
+    a:hover {
+      /* 鼠标放上去时，链接变成深粉色 */
+      color: #b35080;
+    }
+
+    /* 设置网页底部的文字 */
+    footer {
+      /* 与最后一张纸条之间留 35 像素 */
+      margin-top: 35px;
+      text-align: center;
+      font-size: 13px;
+      color: #8b7c91;
+    }
+
+  </style>
+
+</head>
+
+<!-- body：放实际显示在页面上的内容 -->
+<body>
+
+  <!-- 页面的大标题 -->
+  <h1>My Creative Coding Journal</h1>
+
+  <!-- 名字、NetID 和课程学期 -->
+  <p class="intro">
+    Xiaoyan Ma / xm2500<br>
+    Creative Coding · Fall 2026
+  </p>
+
+  <!-- 第一周：week 控制纸条外观，pink 控制背景颜色 -->
+  <div class="week pink">
+
+    <!-- 第一周的标题 -->
+    <h2>Week 1 — Creative Coding is...</h2>
+    <p><a href="./week1/index.html">View Project</a></p>
+
+    <p><a href="./week1/README.html">Notes</a></p>
+
+  </div>
+
+  <div class="week purple">
+
+    <h2>Week 2 — Processing Drawings</h2>
+    <p><a href="./week2/index.html">View Project</a></p>
+
+  </div>
+
+  <div class="week pink">
+
+
+    <h2>Week 3 — Three Ideas</h2>
+
+    <p><a href="./week3/index1.html">Idea 1</a></p>
+
+    <p><a href="./week3/index2.html">Idea 2</a></p>
+
+    <p><a href="./week3/index3.html">Idea 3</a></p>
+
+  </div>
+
+  <div class="week purple">
+
+    <h2>Week 4 — Iteration Generation II</h2>
+
+    <p><a href="./week4/index.html">View Project</a></p>
+
+    <p><a href="./week4/Media/">Media</a></p>
+
+  </div>
+
+  <div class="week pink">
+    <h2>Week 5 — Pattern</h2>
+
+    <p><a href="./week5/index.html">View Project</a></p>
+
+    <p><a href="./week5/Media/">Final Pattern</a></p>
+
+  </div>
+  <div class="week purple">
+    <h2>Week 6 — A Year in One Minute</h2>
+    <p><a href="./week6/index.html">View Project</a></p>
+
+  </div>
+  <footer>
+    Made by Xiaoyan Ma · 2026
+  </footer>
+
+</body>
 </html>
