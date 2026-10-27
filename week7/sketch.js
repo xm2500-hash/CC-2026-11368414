@@ -7,10 +7,8 @@ let quad3;
 
 // 每个面的尺寸
 let quadSize = 400;
-
-// ==============================
 // 第一个面要用到的变量
-// ==============================
+
 
 // 月牙的位置
 let moonX;
@@ -24,19 +22,16 @@ let moonSpeedY;
 let cloudCircles = [];
 let numCloudCircles = 45;
 
-// ==============================
 // 第二个面要用到的变量
-// ==============================
 
 // 星星数组
 let beijingStars = [];
 let numBeijingStars = 35;
 
 function setup() {
-    // 创建 WEBGL 画布
+// 创建 WEBGL 画布
     createCanvas(windowWidth, windowHeight, WEBGL);
-
-    // 创建投影映射工具
+ // 创建投影映射工具
     pMapper = createProjectionMapper(this);
 
     // 创建三个投影面
@@ -44,9 +39,8 @@ function setup() {
     quad2 = pMapper.createQuadMap(quadSize, quadSize);
     quad3 = pMapper.createQuadMap(quadSize, quadSize);
 
-    // ==============================
     // 初始化第一个面的月牙
-    // ==============================
+    
     moonX = 200;
     moonY = 120;
 
@@ -54,9 +48,9 @@ function setup() {
     moonSpeedX = 2.2;
     moonSpeedY = 1.8;
 
-    // ==============================
+
     // 初始化第一个面的云海圆形
-    // ==============================
+  
     for (let i = 0; i < numCloudCircles; i++) {
         let oneCircle = {
             // 主要集中在左下区域
@@ -72,9 +66,8 @@ function setup() {
         cloudCircles.push(oneCircle);
     }
 
-    // ==============================
     // 初始化第二个面的星星
-    // ==============================
+ 
     for (let i = 0; i < numBeijingStars; i++) {
         let oneStar = {
             x: random(20, 380),
@@ -97,9 +90,8 @@ function draw() {
     quad3.displaySketch(drawFace3);
 }
 
-// ======================================================
 // 第一个面：梦幻天空 + 左下角云海 + 会反弹的月牙
-// ======================================================
+
 function drawFace1(pg) {
 
     // ------------------------------
@@ -127,9 +119,9 @@ function drawFace1(pg) {
         pg.line(0, y, quadSize, y);
     }
 
-    // ------------------------------
+ 
     // 2. 小星星
-    // ------------------------------
+
     pg.noStroke();
 
     for (let i = 0; i < 18; i++) {
@@ -149,9 +141,9 @@ function drawFace1(pg) {
         pg.circle(starX, starY, 3);
     }
 
-    // ------------------------------
+  
     // 3. 左下角粉紫色云海
-    // ------------------------------
+
     for (let i = 0; i < cloudCircles.length; i++) {
         let c = cloudCircles[i];
 
@@ -182,20 +174,17 @@ function drawFace1(pg) {
     pg.circle(150, 390, 120);
     pg.circle(220, 380, 130);
 
-    // ------------------------------
+    
     // 4. 画更深一点的月牙
-    // ------------------------------
+    
     drawCrescentMoon(pg, moonX, moonY, 55);
 
-    // ------------------------------
     // 5. 更新月牙位置
-    // ------------------------------
     moonX += moonSpeedX;
     moonY += moonSpeedY;
 
-    // ------------------------------
     // 6. 碰到边缘就弹回来
-    // ------------------------------
+    
     let moonR = 30;
 
     if (moonX > quadSize - moonR || moonX < moonR) {
@@ -207,9 +196,8 @@ function drawFace1(pg) {
     }
 }
 
-// ======================================================
 // 画月牙函数
-// ======================================================
+
 function drawCrescentMoon(pg, x, y, size) {
 
     // 外层光晕也稍微加深一点
@@ -227,14 +215,12 @@ function drawCrescentMoon(pg, x, y, size) {
     pg.circle(x + size * 0.28, y - size * 0.06, size * 0.82);
 }
 
-// ======================================================
 // 第二个面：北京黑色山影 + 梦幻背景 + 大星星抖动
-// ======================================================
+
 function drawFace2(pg) {
 
-    // ------------------------------
     // 1. 梦幻渐变背景（比第一面略偏冷）
-    // ------------------------------
+
     for (let y = 0; y < quadSize; y++) {
 
         let t = map(y, 0, quadSize, 0, 1);
@@ -255,13 +241,11 @@ function drawFace2(pg) {
         pg.line(0, y, quadSize, y);
     }
 
-    // ------------------------------
     // 2. 大一些的星星，轻轻抖动 + 闪烁
-    // ------------------------------
     pg.noStroke();
 
     for (let i = 0; i < beijingStars.length; i++) {
-        let s = beijingStars[i];
+    let s = beijingStars[i];
 
         // 星星轻微抖动
         let sx = s.x + sin(frameCount * 0.05 + s.offset) * 2.5;
@@ -283,9 +267,7 @@ function drawFace2(pg) {
         pg.circle(sx, sy, s.size);
     }
 
-    // ------------------------------
     // 3. 北京黑色山 / 城市剪影
-    // ------------------------------
     // 先画远处山影
     pg.noStroke();
     pg.fill(18, 15, 25);
@@ -321,13 +303,13 @@ function drawFace2(pg) {
     pg.vertex(0, 400);
     pg.endShape(CLOSE);
 
-    // 加一点“北京影子”的感觉：简单的建筑轮廓
+    // 加一点北京影子的感觉：简单的建筑轮廓
     pg.fill(0);
     pg.rect(250, 255, 18, 65);
     pg.rect(272, 240, 14, 80);
     pg.rect(290, 265, 22, 55);
 
-    // 一个简化的塔形剪影，增加一点城市感
+    // 一个简化的塔形剪影
     pg.beginShape();
     pg.vertex(110, 320);
     pg.vertex(118, 275);
@@ -340,14 +322,13 @@ function drawFace2(pg) {
     pg.circle(123, 266, 6);
 }
 
-// ======================================================
 // 第三个面：先保留之前的柔和轨道圆环
-// ======================================================
+
 function drawFace3(pg) {
 
-    // ------------------------------
+
     // 1. 梦幻渐变背景
-    // ------------------------------
+  
     for (let y = 0; y < quadSize; y++) {
 
         let t = map(y, 0, quadSize, 0, 1);
@@ -370,9 +351,8 @@ function drawFace3(pg) {
         pg.line(0, y, quadSize, y);
     }
 
-    // ------------------------------
     // 2. 月亮一闪一闪，时而出现时而不出现
-    // ------------------------------
+  
     // 用 sin 控制透明度，形成忽隐忽现效果
     let moonAlpha = map(
         sin(frameCount * 0.03),
@@ -397,16 +377,15 @@ function drawFace3(pg) {
     pg.fill(95, 70, 130, moonAlpha);
     pg.circle(moonX + moonSize * 0.28, moonY - moonSize * 0.06, moonSize * 0.82);
 
-    // ------------------------------
+    
     // 3. 远处海平面
-    // ------------------------------
+   
     pg.noStroke();
     pg.fill(90, 105, 165, 120);
     pg.rect(0, 215, quadSize, 8);
 
-    // ------------------------------
     // 4. 大海
-    // ------------------------------
+
     // 用分层的波浪线和色块表现海面
     pg.fill(90, 110, 180, 130);
     pg.rect(0, 220, quadSize, 95);
@@ -444,9 +423,9 @@ function drawFace3(pg) {
     }
     pg.endShape();
 
-    // ------------------------------
+   
     // 5. 沙滩
-    // ------------------------------
+  
     pg.noStroke();
 
     // 主沙滩
@@ -457,9 +436,9 @@ function drawFace3(pg) {
     pg.fill(235, 205, 180, 70);
     pg.rect(0, 305, quadSize, 18);
 
-    // ------------------------------
+   
     // 6. 沙滩上的一些柔和圆点/贝壳感装饰
-    // ------------------------------
+ 
     pg.fill(245, 220, 200, 90);
     pg.circle(65, 350, 12);
     pg.circle(130, 370, 10);
@@ -480,9 +459,9 @@ function drawFace3(pg) {
     pg.ellipse(250, 245, 110, 24);
     pg.ellipse(320, 285, 80, 18);
 }
-// ======================================================
+
 // 保留老师要求的快捷键
-// ======================================================
+
 function keyPressed() {
     switch (key) {
 
