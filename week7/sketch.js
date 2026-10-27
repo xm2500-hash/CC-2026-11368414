@@ -4,36 +4,27 @@ let pMapper;
 let quad1;
 let quad2;
 let quad3;
-
 // 每个面的尺寸
 let quadSize = 400;
 // 第一个面要用到的变量
-
-
 // 月牙的位置
 let moonX;
 let moonY;
-
 // 月牙移动速度
 let moonSpeedX;
 let moonSpeedY;
-
 // 云海圆形数据
 let cloudCircles = [];
 let numCloudCircles = 45;
-
 // 第二个面要用到的变量
-
 // 星星数组
 let beijingStars = [];
 let numBeijingStars = 35;
-
 function setup() {
 // 创建 WEBGL 画布
     createCanvas(windowWidth, windowHeight, WEBGL);
  // 创建投影映射工具
     pMapper = createProjectionMapper(this);
-
     // 创建三个投影面
     quad1 = pMapper.createQuadMap(quadSize, quadSize);
     quad2 = pMapper.createQuadMap(quadSize, quadSize);
@@ -80,6 +71,19 @@ function setup() {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 function draw() {
     // 整个主画布背景设为黑色
     background(0);
@@ -118,8 +122,6 @@ function drawFace1(pg) {
         pg.stroke(r, g, b);
         pg.line(0, y, quadSize, y);
     }
-
- 
     // 2. 小星星
 
     pg.noStroke();
@@ -141,7 +143,6 @@ function drawFace1(pg) {
         pg.circle(starX, starY, 3);
     }
 
-  
     // 3. 左下角粉紫色云海
 
     for (let i = 0; i < cloudCircles.length; i++) {
@@ -173,7 +174,6 @@ function drawFace1(pg) {
     pg.circle(35, 380, 120);
     pg.circle(150, 390, 120);
     pg.circle(220, 380, 130);
-
     
     // 4. 画更深一点的月牙
     
@@ -196,21 +196,21 @@ function drawFace1(pg) {
     }
 }
 
-// 画月牙函数
+// 画月牙函数？？？整不明白但是没关系
 
 function drawCrescentMoon(pg, x, y, size) {
 
-    // 外层光晕也稍微加深一点
+    // 外层光晕
     pg.noStroke();
     pg.fill(235, 210, 180, 45);
     pg.circle(x, y, size + 18);
 
-    // 主月亮：不再那么浅，便于投影
+    // 主月亮
     pg.fill(225, 205, 170);
     pg.circle(x, y, size);
 
     // 遮挡月亮形成月牙
-    // 使用更深的背景近似色
+   
     pg.fill(105, 70, 135);
     pg.circle(x + size * 0.28, y - size * 0.06, size * 0.82);
 }
@@ -385,7 +385,6 @@ function drawFace3(pg) {
     pg.rect(0, 215, quadSize, 8);
 
     // 4. 大海
-
     // 用分层的波浪线和色块表现海面
     pg.fill(90, 110, 180, 130);
     pg.rect(0, 220, quadSize, 95);
@@ -436,7 +435,6 @@ function drawFace3(pg) {
     pg.fill(235, 205, 180, 70);
     pg.rect(0, 305, quadSize, 18);
 
-   
     // 6. 沙滩上的一些柔和圆点/贝壳感装饰
  
     pg.fill(245, 220, 200, 90);
