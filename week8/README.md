@@ -1,61 +1,13 @@
-# template
+# Week 8 — Self Portrait
 
----
+## Concept
 
-This is a README file that can be used to describe and document your assignment.
+For this project, I chose a selfie with a filter that I really like because I think I look pretty in it. I have always loved polka dot art, and it was actually where my interest in art first began. When I saw this pixel effect in class, I immediately became interested in it and wanted to try it with my own portrait.
 
-Markdown Cheatsheet (from [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)):
+I also chose red as the highlight color because I think red is a very bold and expressive color. I like the version of myself that is confident, expressive, and unafraid to stand out.
 
----
+## Creative Process
 
-# Heading1
-## Heading2
-### Heading3
-#### Heading4
-##### Heading5
-###### Heading6
+I started with the pixel array example from class and used it to turn my selfie into a portrait made of black-and-white dots. I used the RGB values of the original image to calculate the grayscale of each dot.
 
-**bold text**
-
-*italicized text*
-
-~~strikethrough text~~
-
-Ordered List:
-1. First item
-2. Second item
-3. Third item
-
-Unordered List:
-- First item
-- Second item
-- Third item
-
-`short code block`
-
-```
-extended code block
-fun() {
-  return 0
-}
-```
-
-Link:  
-[linked text](https://www.example.com)
-
-
-Image with url:  
-![image description](https://dm-gy-6063-2024f-b.github.io/assets/homework/02/clark-espaco-modulado-00.jpg)
-
-
-Image on repo:  
-![image description](./file-name.jpg)
-
-
-To start a new line, add two spaces at the end of a line, like this:  
-this is a new line.
-
-
-To start a new paragraph, leave an empty line between two lines of text.
-
-This is a new paragraph.
+I then added mouse interaction so that moving the mouse horizontally changes the size of the dots. Clicking on the portrait turns the dots around the selected area red, and pressing the R key turns the red highlight on or off.
